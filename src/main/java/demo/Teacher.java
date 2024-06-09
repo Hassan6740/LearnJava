@@ -1,41 +1,37 @@
 package demo;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.Scanner;  // Import the Scanner class
-
 public class Teacher {
-    private String teacherName;
-    private String teacherAddress;
+    private String name;
+    private String address;
 
     public Teacher() {
     }
 
-    public Teacher(String teacherName, String teacherAddress) {
-        this.teacherName = teacherName;
-        this.teacherAddress = teacherAddress;
+    public Teacher(String name, String address) {
+        this.name = name;
+        this.address = address;
     }
 
-    public void getTeacher() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter Teacher Name: ");
-        this.teacherName = in.nextLine();
-        System.out.print("Enter Teacher Address: ");
-        this.teacherAddress = in.nextLine();
+    public String getName() {
+        return name;
     }
 
-    public void displayTeacher() {
-        System.out.println(STR."Teacher Name: \{this.teacherName}");
-        System.out.println(STR."Teacher Address: \{this.teacherAddress}");
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void writeTeacher() throws IOException {
-        Path teacherFilePath = Path.of("teacher.csv");
-
-        String input = STR."\{teacherName},\{teacherAddress}";
-
-        Files.writeString(teacherFilePath, input, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+    public String getAddress() {
+        return address;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return STR."Teacher [name=\{name}, address=\{address}]";
+    }
+
+
 }

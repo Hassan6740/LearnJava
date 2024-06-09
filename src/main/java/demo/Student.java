@@ -1,50 +1,46 @@
 package demo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.Scanner;  // Import the Scanner class
-
 public class Student {
-    private int studentId;
-    private String studentName;
-    private String studentNumber;
+    private int id;
+    private String name;
+    private String phone;
 
     public Student() {
     }
 
-    public Student(int studentId, String studentName, String studentNumber) {
-        this.studentId = studentId;
-        this.studentName = studentName;
-        this.studentNumber = studentNumber;
+    public Student(int id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
     }
 
-    public void getStudent() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter student ID: ");
-        studentId = sc.nextInt();
-        sc.nextLine(); // Consume newline
-        System.out.print("Enter student name: ");
-        studentName = sc.nextLine();
-        System.out.print("Enter student number: ");
-        studentNumber = sc.nextLine();
+    public int getId() {
+        return id;
     }
 
-    public void displayStudent() {
-        System.out.println(STR."Student ID: \{studentId}");
-        System.out.println(STR."Student Name: \{studentName}");
-        System.out.println(STR."Student Number: \{studentNumber}");
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void studentWrite() throws IOException {
-        Path studentFilePath = Path.of("student.csv");
+    public String getName() {
+        return name;
+    }
 
-        String input = STR."\{studentId},\{studentName},\{studentNumber}";
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        Files.writeString(studentFilePath, input, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return STR."Student [id=\{id}, name=\{name}, phone=\{phone}]";
     }
 
 }
