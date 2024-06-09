@@ -9,7 +9,7 @@ public class CsvStudentWriter {
 
     public void write(Student student) throws IOException {
         Path studentFilePath = Path.of("student.csv");
-        String input = STR."\{student.getId()},\{student.getName()},\{student.getPhone()}";
+        String input = STR."\{student.id()},\{student.name()},\{student.phone()}";
         Files.writeString(studentFilePath, input, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
     }
 

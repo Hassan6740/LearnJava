@@ -1,17 +1,6 @@
 package demo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-public class Teacher {
-    private String name;
-    private String address;
-}
+public record Teacher (
+    String name,
+    String address
+) {}
