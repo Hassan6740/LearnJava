@@ -8,7 +8,7 @@ public class ConsoleStudentReader {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter student ID: ");
         int studentId = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine();
         System.out.print("Enter student name: ");
         String studentName = sc.nextLine();
         System.out.print("Enter student number: ");

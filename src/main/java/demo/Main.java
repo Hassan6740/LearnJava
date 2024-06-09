@@ -1,7 +1,7 @@
 import demo.*;
 
 import java.io.IOException;
-import java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;
 
 void main() throws IOException {
     System.out.println("1 to Enter Student Information");
@@ -18,26 +18,26 @@ void main() throws IOException {
     Scanner sc = new Scanner(System.in);
     char choice = sc.next().charAt(0);
     switch (choice) {
-        case '1': {
+        case '1':
             Student student = studentReader.read();
             System.out.println(student);
             studentWriter.write(student);
             break;
-        }
-        case '2': {
+
+        case '2':
             Teacher teacher = teacherReader.read();
             System.out.println(teacher);
             teacherWriter.write(teacher);
             break;
-        }
+
         case 'Q':
-        case 'q': {
+        case 'q':
             System.out.println("Quitting the program...");
             break;
-        }
-        default: {
+
+        default:
             System.out.println("Invalid choice.");
             break;
-        }
+
     }
 }
