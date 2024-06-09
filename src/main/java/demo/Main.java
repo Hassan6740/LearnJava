@@ -6,10 +6,10 @@ import java.util.Scanner;
 void main() throws IOException {
 
     ConsoleStudentReader studentReader = new ConsoleStudentReader();
-    CsvStudentWriter studentWriter = new CsvStudentWriter();
+    CsvStudentReaderWriter studentWriter = new CsvStudentReaderWriter();
 
     ConsoleTeacherReader teacherReader = new ConsoleTeacherReader();
-    CsvTeacherWriter teacherWriter = new CsvTeacherWriter();
+    CsvTeacherReaderWriter teacherWriter = new CsvTeacherReaderWriter();
 
     Scanner sc = new Scanner(System.in);
     while (true) {
