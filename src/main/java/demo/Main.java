@@ -1,28 +1,39 @@
 import demo.Teacher;
 import demo.Student;
-import java.util.Scanner;
 
+import java.io.IOException;
+import java.util.Scanner;  // Import the Scanner class
 
-void main(){
-    Student student1 = new Student(12, "Hassan", "03270470357");
-    Teacher teacher1 = new Teacher("Bilal", "211-A");
-    int choice;
-    System.out.println("Enter choice: ");
+void main() throws IOException {
+    System.out.println("1 to Enter Student Information");
+    System.out.println("2 to Enter Teacher Information");
+    System.out.println("Q to quit");
+    System.out.print("Enter your choice: ");
     Scanner sc = new Scanner(System.in);
-    choice = sc.nextInt();
+    char choice = sc.next().charAt(0);
     switch (choice) {
-        case 1: {
-            System.out.println("Student");
+        case '1': {
+            Student s1 = new Student();
+            s1.getStudent();
+            s1.displayStudent();
+            s1.studentWrite();
             break;
         }
-        case 2: {
-            System.out.println("Teacher");
+        case '2': {
+            Teacher t1 = new Teacher();
+            t1.getTeacher();
+            t1.displayTeacher();
+            t1.writeTeacher();
             break;
         }
-        case 'Q': {
-            System.out.println("Quit");
+        case 'Q':
+        case 'q': {
+            System.out.println("Quitting the program...");
             break;
         }
-
+        default: {
+            System.out.println("Invalid choice.");
+            break;
+        }
     }
 }
