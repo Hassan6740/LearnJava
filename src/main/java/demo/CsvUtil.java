@@ -12,16 +12,28 @@ public class CsvUtil {
     public static void writeLine(Path path, String line) throws IOException {
         Files.writeString(path, line + "\n", StandardOpenOption.APPEND, StandardOpenOption.CREATE);
     }
+    private static final Path teacherFilePath = Path.of("teacher.csv");
+    private static final Path studentFilePath = Path.of("student.csv");
 
-    public static List<String[]> readFile(Path path) throws IOException {
-        //TODO
+    public static List<String[]> readStudentFile(Path path) throws IOException {
+        List<String> strings = Files.readAllLines(studentFilePath);
+        for (String line : strings) {
+            System.out.println(line);
+        }
         return null;
     }
-
+    public static List<String[]> readTeacherFile(Path path) throws IOException {
+        List<String> strings = Files.readAllLines(teacherFilePath);
+        for (String line : strings) {
+            System.out.println(line);
+        }
+        return null;
+    }
+}
 
 
     //Helping Logic
-    public static void main(String[] args) throws IOException {
+//    public static void main(String[] args) throws IOException {
 
 
 //        //How to read file
@@ -51,6 +63,4 @@ public class CsvUtil {
 //        students.add(new Student(4, "Talha", "Sargodha"));
 
 
-    }
-
-}
+//    }
