@@ -17,20 +17,16 @@ public class CsvStudentReaderWriter {
     }
 
     public List<Student> read() throws IOException {
-        List<String> strings = Files.readAllLines(FILE_PATH);
-        for (String line : strings) {
-            System.out.println(line);
-        }
-        String line = "1,Hassan,123";
-        String[] parts = line.split(",");
-
-        int id = Integer.parseInt(parts[0]);
-        String name = parts[1];
-        String phone = parts[2];
-        new Student(id, name, phone);
-
         List<Student> students = new ArrayList<>();
-        students.add(new Student(id, name, phone));
-        return null;
+
+        List<String[]> records = CsvUtil.readFile(FILE_PATH);
+        for (String[] record : records) {
+            int id = Integer.parseInt(record[0]);
+            String name = record[1];
+            String phone = record[2];
+            Student student = new Student(id, name, phone);
+            students.add(student);
+        }
+        return students;
     }
 }

@@ -39,14 +39,17 @@ void main() throws IOException {
                 teacherWriter.write(teacher);
                 break;
             case '3':
-                //To View Student Info From File
-                List<Student> student1 = studentWriter.read();
-                System.out.println(student1);
+                List<Student> students = studentWriter.read();
+                for (Student s : students) {
+                    System.out.println(s);
+                }
                 break;
             case '4':
-                //To View Teacher Info From File
-                List<Teacher> teacher1 = teacherWriter.read();
-                System.out.println(teacher1);
+                List<Teacher> teachers = teacherWriter.read();
+                for (Teacher t : teachers) {
+                    System.out.println(t);
+                }
+
                 break;
             case 'Q':
             case 'q':

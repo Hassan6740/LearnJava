@@ -9,26 +9,23 @@ import java.util.List;
 
 public class CsvUtil {
 
+
     public static void writeLine(Path path, String line) throws IOException {
         Files.writeString(path, line + "\n", StandardOpenOption.APPEND, StandardOpenOption.CREATE);
     }
-    private static final Path teacherFilePath = Path.of("teacher.csv");
-    private static final Path studentFilePath = Path.of("student.csv");
 
-    public static List<String[]> readStudentFile(Path path) throws IOException {
-        List<String> strings = Files.readAllLines(studentFilePath);
+    public static List<String[]> readFile(Path path) throws IOException {
+        List<String[]> result = new ArrayList<>();
+
+        List<String> strings = Files.readAllLines(path);
         for (String line : strings) {
-            System.out.println(line);
+            String[] fields = line.split(",");
+            result.add(fields);
         }
-        return null;
+        return result;
     }
-    public static List<String[]> readTeacherFile(Path path) throws IOException {
-        List<String> strings = Files.readAllLines(teacherFilePath);
-        for (String line : strings) {
-            System.out.println(line);
-        }
-        return null;
-    }
+
+
 }
 
 
