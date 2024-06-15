@@ -20,7 +20,11 @@ public class CsvStudentReaderWriter extends CsvReaderWriter<Student> {
     }
 
     @Override
-    public String toRecord(Student student) {
-        return student.id() + "," + student.name() + "," + student.phone();
+    public String[] toRecord(Student student) {
+        return new String[] {
+                String.valueOf(student.id()),
+                student.name(),
+                student.phone()
+        };
     }
 }

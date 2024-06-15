@@ -19,8 +19,11 @@ public class CsvTeacherReaderWriter extends CsvReaderWriter<Teacher> {
     }
 
     @Override
-    public String toRecord(Teacher teacher) {
-        return teacher.name() + "," + teacher.address();
+    public String[] toRecord(Teacher teacher) {
+        return new String[] {
+                teacher.name(),
+                teacher.address()
+        };
     }
 
 }
