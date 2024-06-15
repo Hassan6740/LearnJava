@@ -1,9 +1,9 @@
-import demo.ConsoleStudentReader;
-import demo.ConsoleTeacherReader;
-import demo.CsvStudentReaderWriter;
-import demo.CsvTeacherReaderWriter;
-import demo.Student;
-import demo.Teacher;
+import console.ConsoleStudentReader;
+import console.ConsoleTeacherReader;
+import csv.CsvStudentReaderWriter;
+import csv.CsvTeacherReaderWriter;
+import pojo.Student;
+import pojo.Teacher;
 
 import java.io.IOException;
 import java.util.List;

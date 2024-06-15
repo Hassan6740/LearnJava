@@ -1,5 +1,6 @@
-package demo;
+package console;
 
+import pojo.Student;
 import java.util.Scanner;
 
 public class ConsoleStudentReader {
