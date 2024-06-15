@@ -9,9 +9,13 @@ import java.util.List;
 
 public class CsvUtil {
 
+    private static final String FIELD_DELIMITER = ",";
+    private static final String RECORD_SEPARATOR = "\n";
 
-    public static void writeLine(Path path, String line) throws IOException {
-        Files.writeString(path, line + "\n", StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+
+    public static void writeLine(Path path, String[] record) throws IOException {
+        String line = String.join(FIELD_DELIMITER, record) + RECORD_SEPARATOR;
+        Files.writeString(path, line, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
     }
 
     public static List<String[]> readFile(Path path) throws IOException {
@@ -19,7 +23,7 @@ public class CsvUtil {
 
         List<String> strings = Files.readAllLines(path);
         for (String line : strings) {
-            String[] fields = line.split(",");
+            String[] fields = line.split(FIELD_DELIMITER);
             result.add(fields);
         }
         return result;
@@ -27,37 +31,3 @@ public class CsvUtil {
 
 
 }
-
-
-    //Helping Logic
-//    public static void main(String[] args) throws IOException {
-
-
-//        //How to read file
-//        Path path = Path.of("student.csv");
-//        List<String> lines = Files.readAllLines(path);
-//
-//        for (String line : lines) {
-//            System.out.println(line);
-//        }
-
-//        //Parse line
-//        String line = "1,Hassan,1232132";
-//        String[] parts = line.split(",");
-//
-//        int id = Integer.parseInt(parts[0]);
-//        String name = parts[1];
-//        String phone = parts[2];
-//
-//        new Student(id, name, phone);
-
-
-//        //Collection of objects
-//        List<Student> students = new ArrayList<>();
-//        students.add(new Student(1, "Hassan", "Sialkot"));
-//        students.add(new Student(2, "Huzaifa", "Sialkot"));
-//        students.add(new Student(3, "Haadi", "Lahore"));
-//        students.add(new Student(4, "Talha", "Sargodha"));
-
-
-//    }

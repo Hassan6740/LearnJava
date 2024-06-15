@@ -12,14 +12,14 @@ public class CsvTeacherReaderWriter extends CsvReaderWriter<Teacher> {
     }
 
     @Override
-    public Teacher fromRecord(String[] record) {
+    public Teacher fromFields(String[] record) {
         String name = record[0];
         String address = record[1];
         return new Teacher(name, address);
     }
 
     @Override
-    public String[] toRecord(Teacher teacher) {
+    public String[] toFields(Teacher teacher) {
         return new String[] {
                 teacher.name(),
                 teacher.address()

@@ -14,9 +14,8 @@ public abstract class CsvReaderWriter<T> {
     }
 
     public void write(T csvSupported) throws IOException {
-        String[] record = toRecord(csvSupported);
-        String csvLine = String.join(",", record);
-        CsvUtil.writeLine(filePath, csvLine);
+        String[] record = toFields(csvSupported);
+        CsvUtil.writeLine(filePath, record);
     }
 
     public List<T> read() throws IOException {
@@ -24,12 +23,12 @@ public abstract class CsvReaderWriter<T> {
 
         List<String[]> records = CsvUtil.readFile(filePath);
         for (String[] record : records) {
-            T csvSupported = fromRecord(record);
+            T csvSupported = fromFields(record);
             list.add(csvSupported);
         }
         return list;
     }
 
-    public abstract String[] toRecord(T csvSupported);
-    public abstract T fromRecord(String[] record);
+    public abstract String[] toFields(T csvSupported);
+    public abstract T fromFields(String[] record);
 }
