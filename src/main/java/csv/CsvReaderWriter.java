@@ -15,20 +15,8 @@ public abstract class CsvReaderWriter<T> {
 
     public void write(T csvSupported) throws IOException {
         String[] record = toRecord(csvSupported);
-        String csvLine = toCsvLine(record);
+        String csvLine = String.join(",", record);
         CsvUtil.writeLine(filePath, csvLine);
-    }
-
-    private String toCsvLine(String[] record)  {
-        StringBuilder line = new StringBuilder();
-        for (int i = 0; i < record.length; i++) {
-            String field = record[i];
-            line.append(field);
-            if (i < record.length - 1) {
-                line.append(",") ;
-            }
-        }
-        return line.toString();
     }
 
     public List<T> read() throws IOException {
