@@ -8,14 +8,14 @@ public class ConsoleStudentReader {
     public Student read() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter student ID: ");
-        int studentId = sc.nextInt();
+        int id = sc.nextInt();
         sc.nextLine();
         System.out.print("Enter student name: ");
-        String studentName = sc.nextLine();
-        System.out.print("Enter student number: ");
-        String studentNumber = sc.nextLine();
+        String name = sc.nextLine();
+        System.out.print("Enter student city: ");
+        String city = sc.nextLine();
 
-        return new Student(studentId, studentName, studentNumber);
+        return new Student(id, name, city);
     }
 
 }

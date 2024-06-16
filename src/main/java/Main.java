@@ -2,6 +2,9 @@ import console.ConsoleStudentReader;
 import console.ConsoleTeacherReader;
 import csv.CsvStudentReaderWriter;
 import csv.CsvTeacherReaderWriter;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import pojo.Student;
 import pojo.Teacher;
 
@@ -23,6 +26,7 @@ void main() throws IOException {
         System.out.println("2 to Enter Teacher Information");
         System.out.println("3 to View Students Information from File");
         System.out.println("4 to View Teachers Information from File");
+        System.out.println("5 to Search Student By City");
         System.out.println("Q to quit");
         System.out.print("Enter your choice: ");
         char choice = sc.next().charAt(0);
@@ -40,17 +44,21 @@ void main() throws IOException {
                 break;
             case '3':
                 List<Student> students = studentWriter.read();
-                for (Student s : students) {
-                    System.out.println(s);
-                }
+                onEach(students, st -> System.out.println(st));
                 break;
             case '4':
                 List<Teacher> teachers = teacherWriter.read();
-                for (Teacher t : teachers) {
-                    System.out.println(t);
-                }
-
+                onEach(teachers, t -> System.out.println(t));
                 break;
+            case '5':
+                System.out.print("Enter City : ");
+                sc.nextLine();
+                String city = sc.nextLine();
+                List<Student> students1 = studentWriter.read();
+                List<Student> studentsByCity = filter(students1, s -> s.name().equalsIgnoreCase(city));
+                onEach(studentsByCity, t -> System.out.println(t));
+                break;
+
             case 'Q':
             case 'q':
                 System.out.println("Quitting the program...");
@@ -62,4 +70,20 @@ void main() throws IOException {
 
         }
     }
+}
+
+private static <T> void onEach(List<T> list, Consumer<T> consumer) {
+    for (T obj : list) {
+        consumer.accept(obj);
+    }
+}
+
+private static <T> List<T> filter(List<T> list, Predicate<T> criteria) {
+    List<T> filtered = new ArrayList<>();
+    for (T obj : list) {
+        if (criteria.test(obj)) {
+            filtered.add(obj);
+        }
+    }
+    return filtered;
 }

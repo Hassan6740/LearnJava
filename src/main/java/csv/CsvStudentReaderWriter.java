@@ -15,8 +15,8 @@ public class CsvStudentReaderWriter extends CsvReaderWriter<Student> {
     public Student fromFields(String[] record) {
         int id = Integer.parseInt(record[0]);
         String name = record[1];
-        String phone = record[2];
-        return new Student(id, name, phone);
+        String city = record[2];
+        return new Student(id, name, city);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class CsvStudentReaderWriter extends CsvReaderWriter<Student> {
         return new String[] {
                 String.valueOf(student.id()),
                 student.name(),
-                student.phone()
+                student.city()
         };
     }
 }
