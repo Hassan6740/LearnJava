@@ -2,15 +2,15 @@ import console.ConsoleStudentReader;
 import console.ConsoleTeacherReader;
 import csv.CsvStudentReaderWriter;
 import csv.CsvTeacherReaderWriter;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 import pojo.Student;
 import pojo.Teacher;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import static util.FunctionalUtil.filter;
+import static util.FunctionalUtil.forEach;
 
 public class Main {
 
@@ -45,11 +45,11 @@ public class Main {
                     break;
                 case '3':
                     List<Student> students = studentWriter.read();
-                    onEach(students, st -> System.out.println(st));
+                    forEach(students, st -> System.out.println(st));
                     break;
                 case '4':
                     List<Teacher> teachers = teacherWriter.read();
-                    onEach(teachers, t -> System.out.println(t));
+                    forEach(teachers, t -> System.out.println(t));
                     break;
                 case '5':
                     System.out.print("Enter City : ");
@@ -57,7 +57,7 @@ public class Main {
                     String city = sc.nextLine();
                     List<Student> students1 = studentWriter.read();
                     List<Student> studentsByCity = filter(students1, s -> s.name().equalsIgnoreCase(city));
-                    onEach(studentsByCity, t -> System.out.println(t));
+                    forEach(studentsByCity, t -> System.out.println(t));
                     break;
 
                 case 'Q':
@@ -73,21 +73,6 @@ public class Main {
         }
     }
 
-    private static <T> void onEach(List<T> list, Consumer<T> consumer) {
-        for (T obj : list) {
-            consumer.accept(obj);
-        }
-    }
-
-    private static <T> List<T> filter(List<T> list, Predicate<T> criteria) {
-        List<T> filtered = new ArrayList<>();
-        for (T obj : list) {
-            if (criteria.test(obj)) {
-                filtered.add(obj);
-            }
-        }
-        return filtered;
-    }
 }
 
 
