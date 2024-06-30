@@ -6,11 +6,9 @@ import pojo.Student;
 import pojo.Teacher;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-
-import static util.FunctionalUtil.filter;
-import static util.FunctionalUtil.forEach;
 
 public class Main {
 
@@ -45,19 +43,20 @@ public class Main {
                     break;
                 case '3':
                     List<Student> students = studentWriter.read();
-                    forEach(students, st -> System.out.println(st));
+                    students.forEach(System.out::println);
                     break;
                 case '4':
                     List<Teacher> teachers = teacherWriter.read();
-                    forEach(teachers, t -> System.out.println(t));
+                    teachers.forEach(System.out::println);
                     break;
                 case '5':
                     System.out.print("Enter City : ");
                     sc.nextLine();
                     String city = sc.nextLine();
-                    List<Student> students1 = studentWriter.read();
-                    List<Student> studentsByCity = filter(students1, s -> s.name().equalsIgnoreCase(city));
-                    forEach(studentsByCity, t -> System.out.println(t));
+                    studentWriter.read().stream()
+                            .filter(s -> s.name().equalsIgnoreCase(city))
+                            .sorted(Comparator.comparing(Student::name))
+                            .forEach(System.out::println);
                     break;
 
                 case 'Q':
